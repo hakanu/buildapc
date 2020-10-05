@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="The most recent discounts are aggregated for pc builders, collectors. Best buy, walmart, amazon, prime, newegg, kohl's">
+    <meta name="author" content="bapc@guldum.net">
+    
+    <title>Build a PC discounts - the most up to date discount aggregator for PC parts</title>
+    <script src="static/vue.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+  </head>
+  
+  <body>
+    <div id="app">
+      <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">{{ title }}</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gpu">GPU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cpu">CPU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#uk">UK</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#uk">US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#uk">DE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#uk">EU</a>
+            </li>
+          </ul>
+          <!--<form class="form-inline mt-2 mt-md-0">-->
+          <!--  <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+          <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+          <!--</form>-->
+        </div>
+      </nav>
+  
+      <div class="container-fluid">
+        <div class="row">
+
+          <main class="col-sm-12" id="main" style="margin-top: 80px;">
+            <!-- bapc-homepage -->
+            <!-- Adsense -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3237344784986563"
+                 data-ad-slot="9025215385"
+                 data-ad-format="auto"></ins>
+            <!-- Adsense ending -->
+            
+             <!--@keyup.enter="searchItems"-->
+            <div class="form-group">
+              <input class="form-control" type="text" v-model="searchQuery" placeholder="Enter your search terms">
+            </div>
+            
+            <div>
+              <h3 v-if="filteredItems">Search Results</h3>
+              <ul v-for="item in filteredItems">
+                <li><a :href="item.url" target="_blank">{{ item.title }}</a></li>
+              </ul>
+            </div>
+            <hr>
+          
+            <div v-for="bac in bacs">
+                 
+              <h3>{{ bac.title }}</h3>
+              <table class="table table-striped">
+                <tr>
+                  <th>Cat</th>
+                  <th>Title</th>
+                </tr>
+                
+                <tr v-for="item in bac.items">
+                  <td>{{ item.category }}</td>
+                  <td><a :href="item.url" target="_blank">{{ item.title }}</a></td>
+                </tr>
+              </table>
+              <hr>
+            </div>
+          </main>
+
+        </div>
+      </div>
+    </div>
+    
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>The most up to date discount and deal aggregator</p>
+        <p>&copy; <a href="http://hakanu.com">hakulabs</a></p>
+      </div>
+    </footer>
+    
+    <script src="static/jquery-3.2.1.min.js"></script>
+    <script src="static/tether.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/custom.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106789398-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-106789398-1');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+
+  </body>
+</html>
