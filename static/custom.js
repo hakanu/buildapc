@@ -1,6 +1,4 @@
-var _PROXY = 'https://gir.im/'
-var _PROXY = 'https://api.justreadapp.com/api/proxy?url='
-// var _PROXY = ''
+var _PROXY = 'https://api.paylas.io/api/proxy?url='
 var _URLS = [
   _PROXY + 'https://www.reddit.com/r/buildapcsales.json',
   _PROXY + 'https://www.reddit.com/r/buildapcsalesuk.json',
