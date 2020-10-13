@@ -71,8 +71,8 @@ var app = new Vue({
       for (var i = 0; i < _URLS.length; i++) {
         var url = _URLS[i]
         console.log('Fetching ' + url)
-        $.get(url, function(data) {
-          var rawItems = data.data.children
+        $.get(url, function(resp) {
+          var rawItems = resp.data.children
           var items = []
           for (var j = 0; j < rawItems.length; j++) {
             var item = rawItems[j]
