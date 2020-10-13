@@ -72,26 +72,28 @@ var app = new Vue({
         var url = _URLS[i]
         console.log('Fetching ' + url)
         $.get(url, function(resp) {
-          if (!resp || !resp.data || !resp.data.children) {
-            console.log('no items found in the reddit json')
-            continue
+          if (typeof resp == 'string') {
+            resp = JSON.parse(resp)
           }
-          var rawItems = resp.data.children
-          var items = []
-          for (var j = 0; j < rawItems.length; j++) {
-            var item = rawItems[j]
-            items.push({
-              'title': item.data.title,
-              'url': item.data.url,
-              'category': getCategoryFromTitle(item.data.title)
+          if (resp && resp.data && resp.data.children) {
+            console.log('items found in the reddit json')
+            var rawItems = resp.data.children
+            var items = []
+            for (var j = 0; j < rawItems.length; j++) {
+              var item = rawItems[j]
+              items.push({
+                'title': item.data.title,
+                'url': item.data.url,
+                'category': getCategoryFromTitle(item.data.title)
+              })
+            }
+
+            bacs.push({
+              'title': url.substr(url.lastIndexOf('/'), url.lastIndexOf('.')),
+              'items': items,
+              'url': url
             })
           }
-
-          bacs.push({
-            'title': url.substr(url.lastIndexOf('/'), url.lastIndexOf('.')),
-            'items': items,
-            'url': url
-          })
         })
       }
     },
