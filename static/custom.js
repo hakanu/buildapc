@@ -6,6 +6,10 @@ var _URLS = [
   _PROXY + 'https://www.reddit.com/r/bapcsalesgermany.json'
 ]
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function getCategoryFromTitle(title) {
   // console.log('title: ' + title)
   if (!title) return 'null'
@@ -71,7 +75,10 @@ var app = new Vue({
       for (var i = 0; i < _URLS.length; i++) {
         var url = _URLS[i]
         console.log('Fetching ' + url)
-        $.get(url, function(resp) {
+        $.get(url, function(resp, req) {
+          console.log('this: ', this)
+          var subUrl = this.url 
+          console.log('suburl: ', subUrl)
           if (typeof resp == 'string') {
             resp = JSON.parse(resp)
           }
@@ -88,10 +95,11 @@ var app = new Vue({
               })
             }
 
+
             bacs.push({
-              'title': url.substr(url.lastIndexOf('/'), url.lastIndexOf('.')),
+              'title': capitalize(subUrl.substr(subUrl.lastIndexOf('/')+1).replace('.json', '').replace('buildapc', '').replace('bapc', '').replace('sales', '').replace('BaPCSales', '')),
               'items': items,
-              'url': url
+              'url': subUrl 
             })
           }
         })
