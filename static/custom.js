@@ -74,7 +74,7 @@ var app = new Vue({
         $.get(url, function(resp) {
           if (!resp || !resp.data || !resp.data.children) {
             console.log('no items found in the reddit json')
-            return;
+            continue
           }
           var rawItems = resp.data.children
           var items = []
