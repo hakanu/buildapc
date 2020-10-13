@@ -72,6 +72,10 @@ var app = new Vue({
         var url = _URLS[i]
         console.log('Fetching ' + url)
         $.get(url, function(resp) {
+          if (!resp || !resp.data || !resp.data.children) {
+            console.log('no items found in the reddit json')
+            return;
+          }
           var rawItems = resp.data.children
           var items = []
           for (var j = 0; j < rawItems.length; j++) {
